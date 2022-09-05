@@ -12,6 +12,21 @@
 <sup>*</sup>Corresponding author: bennyborremans@gmail.com  
 
 
+## Repository information   
 
+This open access repository accompanies the article "Inferring time of infection from field data using dynamic models of antibody decay" (Borremans et al.). It provides all data and code needed to repeat the analyses described in the article.   
+When using the code and/or data available here, please refer to the project license and cite the article using the following citation: 
 
-Open access repository - Inferring time of infection from field data using dynamic models of antibody decay
+Borremans B. et al. "Inferring time of infection from field data using dynamic models of antibody decay". bioRxiv 2022.     
+
+Bibtex record:    
+
+```
+@article{borremans_inferring_2022,
+title = {Inferring time of infection from field data using dynamic models of antibody decay},	
+journal = {bioRxiv},
+author = {Borremans, Benny and Mummah, Riley O and Guglielmino, Angela H and Galloway, Renee L and Hens, Niel and Prager, K C and Lloyd-Smith, James O},	
+year = {2022}	
+}
+``` 
+
