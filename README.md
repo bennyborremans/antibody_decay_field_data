@@ -30,3 +30,14 @@ year = {2022}
 }
 ``` 
 
+## Content description  
+
+<i>Antibody decay model fit.Rmd</i>:  R markdown file containing all code needed to reproduce the analyses and figures.    
+<i>Antibody-decay-model-fit.html</i>:  R markdown output.   
+<i>Antibody_decay_data.RDS</i>:  R data object containing fox antibody data (excluding negative samples preceding the first positive sample).   
+<i>Antibody_decay_data_incl_neg.RDS</i>:  R data object containing fox antibody data (including negative samples preceding the first positive sample).   
+<i>Function_comparison_post_overall.RDS</i>:  R data object containing parameter estimates for the three different decay functions.   
+The R markdown document refers to a number of additional RDS files that were not included here because of size constraints, but can be easily reproduced with the code provided.    
+
+
+
