@@ -14,7 +14,7 @@
 
 ## Repository and reuse information   
 
-This open access repository accompanies the article "Inferring time of infection from field data using dynamic models of antibody decay" (Borremans et al.). It provides all data and code needed to repeat the analyses described in the article.   
+This open access repository accompanies the article "Inferring time of infection from field data using dynamic models of antibody decay" (Borremans et al.). It provides all data and code needed to repeat the analyses and reproduce the figures.   
 When using the code and/or data available here, please refer to the project license and cite the article using the following citation: 
 
 Borremans B. et al. "Inferring time of infection from field data using dynamic models of antibody decay". bioRxiv 2022.     
