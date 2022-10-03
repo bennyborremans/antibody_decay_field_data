@@ -305,6 +305,7 @@ For more information and details, please see the paper and the supporting inform
 
 observed.data.for.fitting = readRDS("Antibody_decay_data.RDS")
 observed.data.for.fitting.incl.neg = readRDS("Antibody_decay_data_incl_neg.RDS")
+
 neg.intervals = observed.data.for.fitting.incl.neg$time[which(observed.data.for.fitting.incl.neg$seroconversion.interval==T)]
 
 
@@ -4034,7 +4035,8 @@ Using full posterior density, 80% CrI and 50% CrI:
 ```{r fig.height = 16, fig.width = 8}
 
 #plot.order = rev(order(model.outputs$toi.estimated.maxdens))  # order by maxdens
-plot.order = rev(order(neg.intervals))  # order by maxdens
+plot.order = rev(order(neg.intervals))
+
 
 theta.all.ordered = as.data.frame(theta.all[,plot.order]) %>%
        gather
@@ -4141,7 +4143,7 @@ individual.theta.plots.all
 
 
 
-Using full posterior density, 80% CrI and 50% CrI:   
+Using full posterior density, 95% CrI and 50% CrI:   
 
 ```{r fig.height = 16, fig.width = 8}
 
@@ -4514,7 +4516,7 @@ Why does the model result in better estimates of seroconversion time for some in
 All for 95% CrI    
 
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 model.outputs$interval.size = abs(neg.intervals)
 
@@ -4541,7 +4543,7 @@ lm.interval.size = brm(log(toi.information.gained.95cri.perc) ~ scale(interval.s
 
 ### Range of time covered by datapoints   
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 model.outputs$datarange = NA
 
@@ -4573,7 +4575,7 @@ lm.datarange = brm(log(toi.information.gained.95cri.perc) ~ scale(datarange),dat
 
 ### Number of datapoints     
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 
 model.outputs$number.of.datapoints = NA
@@ -4610,7 +4612,7 @@ lm.number.of.datapoints = brm(log(toi.information.gained.95cri.perc) ~ scale(num
 
 ### Estimated peak level    
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 ggplot(model.outputs,aes(x = peak.titer.estimated.mean.pomona, y = 100*toi.information.gained.95cri.perc)) +
        geom_point(color = brewer.pal(11,"Spectral")[2],size = 0.5) +
@@ -4636,7 +4638,7 @@ lm.estimated.peak.level = brm(log(toi.information.gained.95cri.perc) ~ scale(pea
 
 ### Antibody level of the first positive sample     
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 model.outputs$first.pos.level = observed.data.for.fitting$titer.pomona[which(observed.data.for.fitting$time==0)]
 
@@ -4668,7 +4670,7 @@ lm.first.pos.level = brm(log(toi.information.gained.95cri.perc) ~ scale(first.po
 
 ### Estimated decay rate    
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 ggplot(model.outputs,aes(x = decay.rate.estimated.mean.pomona, y = 100*toi.information.gained.95cri.perc)) +
        geom_point(color = brewer.pal(11,"Spectral")[2],size = 0.5) +
@@ -4696,7 +4698,7 @@ lm.decay.rate = brm(log(toi.information.gained.95cri.perc) ~ scale(decay.rate.es
 ### Estimated decay rate and estimate peak antibody level     
 
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 ggplot(model.outputs,aes(x = decay.rate.estimated.mean.pomona, y = peak.titer.estimated.mean.pomona,color = 100*toi.information.gained.95cri.perc)) +
        geom_point(size = 1) +
@@ -4727,7 +4729,7 @@ lm.decay.rate.and.estimated.peak.level = brm(log(toi.information.gained.95cri.pe
 ### Estimated decay rate and first positive level     
 
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 ggplot(model.outputs,aes(x = decay.rate.estimated.mean.pomona, y = first.pos.level,color = 100*toi.information.gained.95cri.perc)) +
        geom_point(size = 1) +
@@ -4755,7 +4757,7 @@ lm.decay.rate.and.first.positive.level = brm(log(toi.information.gained.95cri.pe
 ### Interval size and decay rate     
 
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 ggplot(model.outputs,aes(x = decay.rate.estimated.mean.pomona, y = interval.size,color = 100*toi.information.gained.95cri.perc)) +
        geom_point(size = 1) +
@@ -4783,7 +4785,7 @@ lm.decay.rate.and.interval.size = brm(log(toi.information.gained.95cri.perc) ~ s
 ### Interval size and peak level     
 
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 ggplot(model.outputs,aes(x = interval.size, y = peak.titer.estimated.mean.pomona,color = 100*toi.information.gained.95cri.perc)) +
        geom_point(size = 1) +
@@ -4884,7 +4886,7 @@ plot.covariates.reduction
 ### Number of data points and first positive level     
 
 
-```{r fig.height = 4, fig.width = 4}
+```{r fig.height = 4, fig.width = 4, results = 'hide', message=FALSE, warning=FALSE}
 
 ggplot(model.outputs,aes(x = number.of.datapoints, y = first.pos.level,color = 100*toi.information.gained.95cri.perc)) +
        geom_jitter(size = 1,width=0.1) +
@@ -4912,7 +4914,7 @@ lm.number.of.datapoints.and.first.positive.level = brm(log(toi.information.gaine
 
 # All covariates    
 
-```{r}
+```{r results = 'hide', message=FALSE, warning=FALSE}
 lm.all = brm(log(toi.information.gained.95cri.perc) ~ scale(first.pos.level) + scale(decay.rate.estimated.mean.pomona) + scale(peak.titer.estimated.mean.pomona) + scale(interval.size) + scale(datarange) + scale(number.of.datapoints), data = model.outputs)
 ```
 
@@ -4921,10 +4923,7 @@ lm.all = brm(log(toi.information.gained.95cri.perc) ~ scale(first.pos.level) + s
 
 #### Univariate models P values    
 
-```{r}
-
-
-
+```{r results = 'hide', message=FALSE, warning=FALSE}
 # frequentist:    
 
 # lm.interval.size
@@ -4984,8 +4983,10 @@ model.stats = data.frame(
                                           exp(summary(lm.estimated.peak.level)$fixed[2,4]),
                                           exp(summary(lm.first.pos.level)$fixed[2,4]),
                                           exp(summary(lm.decay.rate)$fixed[2,4])),2))
+```
 
 
+```{r}
 kbl(model.stats) %>%
        kable_classic(bootstrap_options  =  c("striped", "hover","condensed"), full_width=F,html_font="Cambria",fixed_thead=T)
 
@@ -5001,9 +5002,7 @@ All for 95% CrI
 
 
 
-```{r}
-
-
+```{r results = 'hide', message=FALSE, warning=FALSE}
 lm.interval.size.and.decay = brm(log(toi.information.gained.95cri.perc) ~ scale(interval.size) + scale(decay.rate.estimated.mean.pomona),data = model.outputs)
 
 lm.interval.size.and.peak = brm(log(toi.information.gained.95cri.perc) ~ scale(interval.size) + scale(peak.titer.estimated.mean.pomona),data = model.outputs)
@@ -5061,7 +5060,10 @@ model.stats = data.frame(
 
 model.stats.ordered = model.stats %>%
        arrange(LOOIC.est)
+```
 
+
+```{r}
 kbl(model.stats.ordered) %>%
        kable_classic(bootstrap_options  =  c("striped", "hover","condensed"), full_width=F,html_font="Cambria",fixed_thead=T)
 
