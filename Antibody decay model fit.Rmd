@@ -654,7 +654,7 @@ parnames = c(paste0("LogLik",1:nrow(observed.data.for.fitting)),paste0("decay.ra
        
 colnames(chains.burn.df) = parnames
        
-       
+
 ```
 
 
@@ -3322,13 +3322,13 @@ for(i in 1:N.inds){
        model.outputs[teller,"toi.estimated.maxdens.95hdi.low"] = round(hpd.int.toi[1])
        model.outputs[teller,"toi.estimated.maxdens.95hdi.high"] = round(hpd.int.toi[2])
        
-       model.outputs[teller,"toi.information.gained.95cri.perc"] = 1-abs((as.numeric(hpd.int.toi[2]-hpd.int.toi[1])/neg.intervals[i]))
+       model.outputs[teller,"toi.information.gained.95cri.perc"] = 1-abs((as.numeric(hpd.int.toi[2]-hpd.int.toi[1])/(0.95*neg.intervals[i])))
        
        hpd.int.toi.80 = HDInterval::hdi(dens,credMass = 0.80,allowSplit=F)    # highest posterior density credible intervals
-       model.outputs[teller,"toi.information.gained.80cri.perc"] = 1-abs((as.numeric(hpd.int.toi.80[2]-hpd.int.toi.80[1])/neg.intervals[i]))
+       model.outputs[teller,"toi.information.gained.80cri.perc"] = 1-abs((as.numeric(hpd.int.toi.80[2]-hpd.int.toi.80[1])/(0.8*neg.intervals[i])))
        
        hpd.int.toi.50 = HDInterval::hdi(dens,credMass = 0.50,allowSplit=F)    # highest posterior density credible intervals
-       model.outputs[teller,"toi.information.gained.50cri.perc"] = 1-abs((as.numeric(hpd.int.toi.50[2]-hpd.int.toi.50[1])/neg.intervals[i]))
+       model.outputs[teller,"toi.information.gained.50cri.perc"] = 1-abs((as.numeric(hpd.int.toi.50[2]-hpd.int.toi.50[1])/(0.5*neg.intervals[i])))
        
        ### Relative entropy / Kullback-Leibler divergence
        prior.values = neg.intervals[i]:0
