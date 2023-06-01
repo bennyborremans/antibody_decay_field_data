@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/533044775.svg)](https://zenodo.org/badge/latestdoi/533044775)
 # Inferring time of infection from field data using dynamic models of antibody decay
 
 <sup>1,2,3,*</sup>Benny Borremans, <sup>1</sup>Riley O Mummah, <sup>1</sup>Angela H Guglielmino, <sup>4</sup>Renee L Galloway, <sup>2,5</sup>Niel Hens, <sup>1</sup>K C Prager, <sup>1</sup>James O Lloyd-Smith
@@ -29,6 +30,8 @@ author = {Borremans, Benny and Mummah, Riley O and Guglielmino, Angela H and Gal
 year = {2022}	
 }
 ``` 
+
+Github repository DOI: 10.5281/zenodo.7995965.   
 
 ## Content description  
 
